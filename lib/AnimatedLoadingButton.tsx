@@ -1,7 +1,8 @@
 /**
  * Copied and edit from https://github.com/philip-bui/react-native-animated-loading-button
  */
-import React, {Component, PureComponent} from 'react';
+import * as React from 'react';
+import {PureComponent} from 'react';
 import {
   StyleSheet,
   Platform,
