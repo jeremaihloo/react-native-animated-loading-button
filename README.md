@@ -1,48 +1,30 @@
-<img alt="React Native Typescript Library Starter" src="assets/logo.png" width="1050"/>
+<!-- <img alt="React Native Typescript Library Starter" src="assets/logo.png" width="1050"/> -->
 
-[![Battle Tested ✅](https://img.shields.io/badge/-Battle--Tested%20%E2%9C%85-03666e?style=for-the-badge)](https://github.com/WrathChaos/react-native-animated-loading-button)
+<!-- [![Battle Tested ✅](https://img.shields.io/badge/-Battle--Tested%20%E2%9C%85-03666e?style=for-the-badge)](https://github.com/jeremaihloo/rn-animated-loading-button) -->
 
-[![React Native Typescript Library Starter](https://img.shields.io/badge/-Extremely%20easy%20to%20create%20a%20React%20Native%20Component%20Library%20with%20both%20Stateful%20and%20Functional%20Component%20Examples-orange?style=for-the-badge)](https://github.com/WrathChaos/react-native-animated-loading-button)
+<!-- [![React Native Typescript Library Starter](https://img.shields.io/badge/-Extremely%20easy%20to%20create%20a%20React%20Native%20Component%20Library%20with%20both%20Stateful%20and%20Functional%20Component%20Examples-orange?style=for-the-badge)](https://github.com/jeremaihloo/rn-animated-loading-button) -->
 
-[![npm version](https://img.shields.io/npm/v/react-native-animated-loading-button.svg?style=for-the-badge)](https://www.npmjs.com/package/react-native-animated-loading-button)
-[![npm](https://img.shields.io/npm/dt/react-native-animated-loading-button.svg?style=for-the-badge)](https://www.npmjs.com/package/react-native-animated-loading-button)
+[![npm version](https://img.shields.io/npm/v/rn-animated-loading-button.svg?style=for-the-badge)](https://www.npmjs.com/package/rn-animated-loading-button)
+[![npm](https://img.shields.io/npm/dt/rn-animated-loading-button.svg?style=for-the-badge)](https://www.npmjs.com/package/rn-animated-loading-button)
 ![Platform - Android and iOS](https://img.shields.io/badge/platform-Android%20%7C%20iOS-blue.svg?style=for-the-badge)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg?style=for-the-badge)](https://github.com/prettier/prettier)
 
 <p align="center">
-  <img alt="React Native Typescript Library Starter"
+  <img alt="React Native Animated Loading Button"
         src="assets/Screenshots/typescript.jpg" />
 </p>
 
-## Library Usage
+![Screenshots](./assets/Screenshots/example.gif)
 
-- `npm i`
-- Delete example folder
-- Delete build folder
-- Make your own library into the `lib` folder
-- Change package.json
-- Change README for your own documentation
-- `npm run build`
-
-```
-> react-native-animated-loading-button@0.1.0 build /Users/kuray/Coursion/MyLibraries/ReactNative/react-native-animated-loading-button
-> cd lib && tsc && cp ../package.json ../build/dist/ && Echo Build completed!
-
-Build completed!
-```
-
-- Test your build/dist into the new project
-- Finally, time to npm publish :)
-
-### Below part is for Documentation ! Remove above Library Usage
+Source code copied and edit from https://github.com/philip-bui/rn-animated-loading-button , because of personal reason (custom something that it cant be normally).
 
 # Installation
 
 Add the dependency:
 
 ```bash
-npm i react-native-animated-loading-button
+yarn add rn-animated-loading-button
 ```
 
 ## Peer Dependencies
@@ -51,7 +33,7 @@ npm i react-native-animated-loading-button
 
 ```js
 "react": ">= 16.x.x",
-"react-native": ">= 0.55.x",
+"react-native": ">=0.63.x"
 ```
 
 # Usage
@@ -59,13 +41,36 @@ npm i react-native-animated-loading-button
 ## Import
 
 ```jsx
-import MyComponent from "react-native-animated-loading-button";
+import AnimatedLoadingButton from "rn-animated-loading-button";
 ```
 
 ## Fundamental Usage
 
 ```jsx
-<MyComponent />
+<AnimatedLoadingButton
+  containerStyle={styles.submitButtonContainer}
+  buttonStyle={styles.submitButton}
+  title="Submit"
+  titleStyle={styles.submitText}
+  ref={(r) => (buttonRef = r)}
+  onPress={onPress}
+/>
+
+const styles = StyleSheet.create({
+  submitButtonContainer: {
+    height: 40,
+    width: 150,
+  },
+  submitButton: {
+    backgroundColor: '#0D6CEC',
+    borderRadius: 50,
+  },
+  submitText: {
+    fontSize: 18,
+    color: '#FFFFFF',
+  },
+});
+
 ```
 
 ## Example Project 😍
@@ -75,7 +80,7 @@ You can checkout the example project 🥰
 Simply run
 
 - `npm i`
-- `react-native run-ios/android`
+- `npx react-native run-ios/android`
 
 should work of the example project.
 
@@ -83,21 +88,26 @@ should work of the example project.
 
 ## Fundamentals
 
-| Property    |  Type  |  Default  | Description           |
-| ----------- | :----: | :-------: | --------------------- |
-| title       | string | undefined | change the title      |
-| description | string | undefined | change the descrition |
+| Property |  Type  |  Default  | Description      |
+| -------- | :----: | :-------: | ---------------- |
+| title    | string | undefined | change the title |
 
 ## Customization (Optionals)
 
-| Property       |   Type    |  Default  | Description                                                            |
-| -------------- | :-------: | :-------: | ---------------------------------------------------------------------- |
-| enableButton   |  boolean  |   false   | let you enable the button (must use it for button)                     |
-| onPress        | function  | undefined | set your own logic for the button functionality when it is pressed     |
-| buttonText     |  string   | undefined | change the button's text                                               |
-| style          | ViewStyle |  default  | set or override the style object for the main container                |
-| buttonStyle    | ViewStyle |  default  | set or override the style object for the button style                  |
-| ImageComponent |   Image   |  default  | set your own component instead of default react-native Image component |
+| Property           |   Type    |  Default  | Description                                                            |
+| ------------------ | :-------: | :-------: | ---------------------------------------------------------------------- |
+| disabled           |  boolean  |   false   | let you enable the button (must use it for button)                     |
+| onPress            | function  | undefined | set your own logic for the button functionality when it is pressed     |
+| containerStyle     | ViewStyle |  default  | set or override the style object for the main container                |
+| titleStyle         | ViewStyle |  default  | set or override the style object for the button title                  |
+| buttonStyle        | ViewStyle |  default  | set or override the style object for the button style                  |
+| loadingStyle       | ViewStyle |  default  | set or override the style object for the loading style                 |
+| TouchableComponent |   Image   |  default  | set your own component instead of default react-native Image component |
+| useNativeDriver    |  boolean  |   false   | set your own component instead of default react-native Image component |
+| TouchableComponent |   Image   |  default  | set your own component instead of default react-native Image component |
+| TouchableComponent |   Image   |  default  | set your own component instead of default react-native Image component |
+| TouchableComponent |   Image   |  default  | set your own component instead of default react-native Image component |
+| TouchableComponent |   Image   |  default  | set your own component instead of default react-native Image component |
 
 ## Future Plans
 
@@ -110,7 +120,7 @@ Change log will be here !
 
 ## Author
 
-FreakyCoder, kurayogun@gmail.com
+jeremaihloo, jeremaihloo1024@gmail.com
 
 ## License
 
