@@ -1,4 +1,3 @@
-import Text from "./FunctionalComponent/Text";
-import { Hello } from "./StateFulComponent/Hello";
+import AnimatedLoadingButton from "./AnimatedLoadingButton";
 
-export { Text, Hello };
+export default AnimatedLoadingButton;
