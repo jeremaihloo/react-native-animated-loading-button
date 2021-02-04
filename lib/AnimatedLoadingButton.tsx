@@ -228,7 +228,7 @@ export default class AnimatedLoadingButton extends PureComponent<Props> {
           ])}>
           <TouchableOpacity
             onPress={onPress}
-            disabled={loading}
+            disabled={loading||disabled}
             delayPressIn={0}
             activeOpacity={0.3}
             accessibilityRole="button"

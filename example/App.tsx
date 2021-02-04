@@ -9,18 +9,18 @@
  */
 
 import React from 'react';
-import {SafeAreaView, StyleSheet, StatusBar} from 'react-native';
+import {SafeAreaView, StyleSheet, StatusBar, View} from 'react-native';
 
 import AnimatedLoadingButton from './lib/';
 
 const App = () => {
-  let buttonRef = React.createRef<AnimatedLoadingButton>();
+  let buttonRef = React.useRef<AnimatedLoadingButton>(null);
 
   const onPress = () => {
-    buttonRef.setLoading(true);
+    buttonRef?.current?.setLoading(true);
 
     setTimeout(() => {
-      buttonRef.setLoading(false);
+      buttonRef?.current?.setLoading(false);
     }, 3000);
   };
 
@@ -35,9 +35,19 @@ const App = () => {
         <AnimatedLoadingButton
           containerStyle={styles.submitButtonContainer}
           buttonStyle={styles.submitButton}
+          title="Disabled"
+          titleStyle={styles.submitText}
+          ref={buttonRef}
+          onPress={onPress}
+          disabled={true}
+        />
+        <View style={styles.divide} />
+        <AnimatedLoadingButton
+          containerStyle={styles.submitButtonContainer}
+          buttonStyle={styles.submitButton}
           title="Submit"
           titleStyle={styles.submitText}
-          ref={(r) => (buttonRef = r)}
+          ref={buttonRef}
           onPress={onPress}
         />
       </SafeAreaView>
@@ -51,6 +61,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 30,
+  },
+  divide: {
+    height: 50,
   },
   submitButtonContainer: {
     height: 40,

@@ -1,6 +1,6 @@
 {
   "name": "rn-animated-loading-button",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A animated loading button for react native.",
   "main": "./build/dist/index.js",
   "repository": "git@github.com:jeremaihloo/react-native-animated-loading-button.git",
